@@ -1,0 +1,12 @@
+---
+title: "AirBnb Data Final Report"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+![Prices by Borough](figures/prices_by_borough.png)
+![Reviews by Borough](figures/reviews_by_borough.png)
+![Does a Listing get Booked and thus Reviewed More Often Based on Number of Words in the Listing Name?](figures/name_wcount_reviews.png)
