@@ -12,7 +12,7 @@ name_plot2 <- air %>%
   labs(x = "Word count in Listing Name", y = "Number of Reviews for Listing", title = "Number of Reviews by Word Count in Listing Name")
 ggsave("figures/name_wcount_reviews.png", plot = name_plot2)
 
-rules_plot_1 <- air %>%
+rules_plot1 <- air %>%
   ggplot(aes(rules_word_count,price)) + geom_point() +
   labs("Word count in House Rules", y = "Listing Price", title = "Listing Price by Word Count in House Rules")
 ggsave("figures/rules_wcount_price.png", plot = rules_plot1)
