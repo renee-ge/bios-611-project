@@ -16,7 +16,7 @@ num_3 <- air %>%
   summarise(mea = round(mean(number.of.reviews, na.rm = TRUE),2)) %>%
   ggplot(aes(room.type, mea, fill = room.type, label = mea)) +
   geom_bar(stat = "identity") +
-  labs(x = "Room Type", y = "Average Number of Reviews ", title = "Average Number of Reviews per Property by Room Type") +
+  labs(x = "Room Type", y = "Average Number of Reviews ", title = "Avg No. of Reviews per Property by Room Type") +
   scale_fill_brewer(palette = "BuGn") +
   theme(legend.position = "none") +
   geom_text(vjust = -0.2)
@@ -43,7 +43,7 @@ num_5 <- air %>%
 num_6 <- air %>%
   drop_na(price_cat) %>%
   group_by(price_cat) %>%
-  summarise(sum = mean(number.of.reviews, na.rm = TRUE)) %>%
+  summarise(sum = sum(number.of.reviews, na.rm = TRUE)) %>%
   ggplot(aes(price_cat, sum, fill = price_cat, label = sum)) +
   geom_bar(stat = "identity") +
   scale_fill_brewer(palette = "BuGn") +

@@ -163,4 +163,4 @@ sum15 <- air %>%
 
 ggsave("figures/summary_pie_statistics.png", plot = grid.arrange(sum1,sum2,sum3, sum13,nrow = 2, ncol = 2), width = 10, height = 4)
 
-ggsave("figures/summary_stats.png", plot = grid.arrange(sum4,sum8, sum9,sum10,sum6,sum7,sum11, sum12, sum14,sum15 ncol = 2, nrow = 5), height = 15, width = 14)
+ggsave("figures/summary_stats.png", plot = grid.arrange(sum4,sum8, sum9,sum10,sum6,sum7,sum11, sum12, sum14,sum15, ncol = 2, nrow = 5), height = 15, width = 14)
