@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Project Overview:
 AirBnb is an online marketplace where individuals can rent out their own homes to others. The big question is what allows an airbnb to be successful and what properties about different listings or hosts are more attractive to users? This project is an investigation into such trends among NYC Airbnbs as well as between-borough differences in these trends. The dataset is taken from [Kaggle](https://www.kaggle.com/datasets/arianazmoudeh/airbnbopendata). We start with an exploratory data analysis of this dataset with our ultimate goal of building a model of the best predictors for Airbnb success. 
 
-We are measuring success by proxy with the number of reviews on a property. A secondary metric we are investigating is the Rating which may not been as good of a metric since a property could have only 1 review and any rating.
+We are measuring success by proxy with the number of reviews on a property.
 
 ## Exploratory Data Analysis
 
@@ -50,6 +50,45 @@ From our visualizations here we can infer the following:
   + As with the graph in our summary statistics of the number of listings in each borough, Brooklyn and Manhattan have the most reviews, with Brooklyn overtaking Manhattan in number of reviews but having fewer properties. 
   + The graph of averages tells that although Staten Island, Queens, and the Bronx have much fewer listings than Brooklyn and Manhattan, there are more reviews for each listing on average which may actually indicate that AirBnbs in those Boroughs may be more likely to be successful.
 
-![Prices by Borough](figures/prices_by_borough.png)
-![Reviews by Borough](figures/reviews_by_borough.png)
+### Trends within Boroughs
+Expanding off the last two graphs in the above exploration, we want to examine what trends, if any, exist between the different boroughs.
+![](figures/price_borough.png)
+![](figures/assoc_borough.png)
+![](figures/rat_avail_borough.png)
+Some things to note:
+
+* The distribution of prices, host id verification, instant bookability, and cancellation policy remains similar across the Boroughs  
+* On average Airbnbs in Brooklyn and Manhattan had much less availability than those in the Bronx and Staten Island - could mean these two boroughs are more popular destination and thus more booked typically.
+* The average rating is also similar across boroughs Staten Island having the highest average rating of 3.4 and Brooklyn the lowest at 3.28
+* The distribution of rooms types is a bit interesting
+  + Manhattan has more entire homes available than the other boroughs
+  + The Bronx and Queens have more private rooms and shared rooms relative to the other boroughs.
+
+## Model Building:
+We start by running individual linear regression models for number of reviews against each potential predictor. Here, I excluded the categorical variables which appeared to have no association in our visualizations above.
+
+Models were run for Number of Reviews ~ (rules word count, name word count, minimum nights, price, room type, borough, and construction year) individually. The results have been compiled into one table below:
+
+<center>
+![](models/individual_regression.png)
+</center>
+
+We see that the predictors significantly associated with number of reviews (p-value < 0.05) are name word count, minimum nights, room type, and borough. We put all these into a model and examine the results:
+
+<center>
+![](models/combined_regression.png)
+</center>
+
+It seems that Name Word Count is no longer significantly associated and so we remove it and run this model again:
+<center>
+![](models/adjusted_regression.png)
+</center>
+
+And so the best predictors of number of reviews are minimum nights, room type, and borough. Lower minimum night requirements, hotel rooms, and being located in Queens and Staten Island were all more closely associated with number of reviews. However, this model has a residual standard error of 48.98 on 101004 degrees of freedom and an adjusted R-squared of 0.01883 which indicate that this model still might not be that great. 
+
+## Conclusions:
+
+We have some interesting results here. From our model it seems that success in Airbnbs (number of reviews) is more associated with lower minimum night requirements, being in Queens and Staten Island, and being a Hotel Room. However, from our visualization we can also indicate that generally a shorter name for your listing might help. We also found some between Borough trends that might serve to indicate what is different about people hosting in each borough and about what users are looking for in those areas. Although we are limited by our choice of variable for success, since number of reviews will not be able to account for things like relative locations to landmarks and why the majority of people travel to New York and as seen through our availability variable which indicates some opposing conclusions to the ones given by our number of reviews variable. 
+
+Further work that could be done here would be to map the latitudes and longitudes of all listings and also examine their distances from NYC landmarks. It would also be interesting to see how the trends seen here compare to those in other cities.
 
