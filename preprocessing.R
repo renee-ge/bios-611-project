@@ -29,6 +29,9 @@ air$availability.365 <- ifelse(air$availability.365 > 365 | air$availability.365
 #There are last reveiw dates that occur after the date the dataset was downloaded and so these are set to NA
 air$last.review[air$last.review > as.Date("2022-09-01")] <- NA
 
+#creating a price category
+air$price_cat <- cut(air$price, breaks = c(0,250, 500, 750, 1000, 1250), dig.lab = 6)
+
 # some really outrageous minimum stay entries we set to NA
 air$minimum.nights <- ifelse(air$minimum.nights < 0 | air$minimum.nights >90, NA, air$minimum.nights)
 
