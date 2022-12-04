@@ -149,6 +149,18 @@ sum13 <- air %>%
              position = position_stack(vjust = 0.5),
              show.legend = FALSE)
 
+sum14 <- air %>%
+  drop_na(price) %>%
+  ggplot() +
+  geom_histogram(aes(x = price),color = "black", fill = "white") +
+  labs(x = "Price", y = "Count", title = "Distribution of Listing Prices")
+
+sum15 <- air %>%
+  drop_na(service.fee) %>%
+  ggplot() +
+  geom_point(aes(x=service.fee, y = price)) +
+  labs(x = "Service Fee",y= "Price", title = "Price by Service Fee")
+
 ggsave("figures/summary_pie_statistics.png", plot = grid.arrange(sum1,sum2,sum3, sum13,nrow = 2, ncol = 2), width = 10, height = 4)
 
-ggsave("figures/summary_stats.png", plot = grid.arrange(sum4,sum8, sum9,sum10,sum6,sum7,sum11, sum12, ncol = 2, nrow = 4), height = 12, width = 14)
+ggsave("figures/summary_stats.png", plot = grid.arrange(sum4,sum8, sum9,sum10,sum6,sum7,sum11, sum12, sum14,sum15 ncol = 2, nrow = 5), height = 15, width = 14)
