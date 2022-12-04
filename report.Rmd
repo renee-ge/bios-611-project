@@ -27,12 +27,29 @@ We do have some things to note:
 * The majority of AirBnbs have minimum night requirements under 30 with most under 12 and then a spike at 30 which would be a minimum 1 month stay.
 * Future Availability could be an indicator that a listing is very booked for the next year and so is very popular or that for some unknown reason it isn't available. This is a little tricky and since we don't know more I won't do much with this variable
 * The distribution of the number of reviews also tells us that there are more properties with lower numbers of reviews which makes sense.
+* The prices of listings seem relatively uniformly distributed with prices in the middle range occurring just slightly more often.
+* Price and Service Fee are exactly correlated
 
 ### Trends in Number of Reviews
+Now we begin to investigate associations between predictors and the Number of Reviews.
 
 ![Word Count Variables](figures/wcount_reviews.png)
+![Barplots of trends in numbers of reviews](figures/barplots_reviews.png)
+![](figures/line_reviews.png)
+![](figures/borough_reviews.png)
+From our visualizations here we can infer the following:
 
+* A property's cancellation policy and whether it is instantly bookable does not seem to have any association on the number of reviews the property has
+* Originally, I had hypothesized that house rule word count would more likely be associated with number of reviews than the name word count. This extends from the idea that a listing with more rules might seem less attractive to users. But this does not seem to be the case and there appears to be more of an association between name word count and number of reviews than house rules word count and number of reviews
+* Hotel rooms have the highest average number of reviews - even though hotel rooms account for 0.1% of room types Hotels can hold many more people and as a result would have a higher average. 
+  + After hotels, private rooms and entire homes are about equal at 27.84 and 27.42 average reviews respectively
+  + Shared rooms have the lowest average. This agrees with our intuition in that people may be wary about shared rooms due to issues of privacy and safety.
+* The average number of reviews peaks for listings built in 2011 and is lowest for those built in 2013
+* The average number of reviews is very variable by minimum nights but does seem to generally decrease as minimum nights goes up.
+* Lastly, we have a comparison of average number of reviews to total number of reviews by Borough. 
+  + As with the graph in our summary statistics of the number of listings in each borough, Brooklyn and Manhattan have the most reviews, with Brooklyn overtaking Manhattan in number of reviews but having fewer properties. 
+  + The graph of averages tells that although Staten Island, Queens, and the Bronx have much fewer listings than Brooklyn and Manhattan, there are more reviews for each listing on average which may actually indicate that AirBnbs in those Boroughs may be more likely to be successful.
 
 ![Prices by Borough](figures/prices_by_borough.png)
 ![Reviews by Borough](figures/reviews_by_borough.png)
-![Does a Listing get Booked and thus Reviewed More Often Based on Number of Words in the Listing Name?](figures/name_wcount_reviews.png)
+
