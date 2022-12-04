@@ -6,6 +6,32 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+## Project Overview:
+AirBnb is an online marketplace where individuals can rent out their own homes to others. The big question is what allows an airbnb to be successful and what properties about different listings or hosts are more attractive to users? This project is an investigation into such trends among NYC Airbnbs as well as between-borough differences in these trends. The dataset is taken from [Kaggle](https://www.kaggle.com/datasets/arianazmoudeh/airbnbopendata). We start with an exploratory data analysis of this dataset with our ultimate goal of building a model of the best predictors for Airbnb success. 
+
+We are measuring success by proxy with the number of reviews on a property. A secondary metric we are investigating is the Rating which may not been as good of a metric since a property could have only 1 review and any rating.
+
+## Exploratory Data Analysis
+
+### Summary Statistics of all Variables
+We first examine the distribution of all of our variables to see if theres anything interesting.
+![Pie charts](figures/summary_pie_statistics.png)
+![](figures/summary_stats.png)
+From here we see some variables are relatively uniformly distributed namely cancellation policy, instant bookability, host identity, and property construction year. 
+
+We do have some things to note:
+
+* The majority of Airbnbs are located in Manhattan and Brooklyn, with Manhattan having the most and Staten Island the least
+* Most listings house rules and listing name word counts under 50 and 10 respectively
+* The vast majority of Airbnbs are entire homes or private rooms with Shared rooms accounting for 2.2% of AirBnbs and Hotel rooms accounting for 0.1%
+* The majority of AirBnbs have minimum night requirements under 30 with most under 12 and then a spike at 30 which would be a minimum 1 month stay.
+* Future Availability could be an indicator that a listing is very booked for the next year and so is very popular or that for some unknown reason it isn't available. This is a little tricky and since we don't know more I won't do much with this variable
+* The distribution of the number of reviews also tells us that there are more properties with lower numbers of reviews which makes sense.
+
+### Trends in Number of Reviews
+
+![Word Count Variables](figures/wcount_reviews.png)
+
 
 ![Prices by Borough](figures/prices_by_borough.png)
 ![Reviews by Borough](figures/reviews_by_borough.png)
