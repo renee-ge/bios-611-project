@@ -24,6 +24,6 @@ A makefile is included with this project and describes how all artifacts (data, 
 
 `make figures/review_by_borough.png`
 
-The main product of this analysis if the final report. Which can be built using make inside the rstudio terminal in the docker container:
+The main product of this analysis if the final report. Which can be built using make inside the rstudio terminal in the docker container with the following command. Make sure your working directory is the airbnb director.
 
 `make report.html`
